@@ -1,0 +1,13 @@
+---
+- hosts: all
+  pre_tasks:
+    - name: ensure nginx is installed
+      package:
+        name: nginx
+    - name: ensure nginx service is running
+      service:
+        name: nginx
+        enabled: yes
+        state: running
+  roles:
+    - vagrant

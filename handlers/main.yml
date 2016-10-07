@@ -1,0 +1,9 @@
+- name: restart tvheadend
+  service:
+    name: tvheadend
+    state: restarted
+
+- name: reload nginx
+  service:
+    name: nginx
+    state: reloaded
