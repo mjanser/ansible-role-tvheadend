@@ -2,3 +2,5 @@
 tvheadend_server_name: example.com
 tvheadend_port: 9981
 tvheadend_allowed_network: "{{ ansible_default_ipv4.network|default('192.168.1.0') }}/{{ ('192.168.1.0/' ~ ansible_default_ipv4.netmask|default('255.255.255.0'))|ipaddr('prefix') }}"
+
+tvheadend_recordings: /home/tvheadend/recordings

@@ -15,11 +15,20 @@
     - python-netaddr
     - tvheadend
 
+- name: ensure directory for recordings exists
+  file:
+    dest: "{{ tvheadend_recordings }}"
+    state: directory
+    recurse: yes
+    owner: tvheadend
+    group: tvheadend
+    mode: "u=rwX,g=rX,o=rX"
+
 - name: ensure acl is disabled
   lineinfile:
     dest: /etc/sysconfig/tvheadend
     regexp: '^OPTIONS=.*$'
-    line: 'OPTIONS="-c /home/tvheadend/config -u tvheadend -g tvheadend -6 --http_port 9981 --htsp_port 9982 --noacl"'
+    line: 'OPTIONS="-c /home/tvheadend/config -u tvheadend -g tvheadend -6 --http_port {{ tvheadend_port }} --htsp_port 9982 --noacl"'
   notify: restart tvheadend
 
 - name: ensure service is running
