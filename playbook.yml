@@ -8,6 +8,6 @@
       service:
         name: nginx
         enabled: yes
-        state: running
+        state: started
   roles:
     - vagrant
